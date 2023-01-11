@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+
+        <h1>Exercice 0</h1>
+
+        <script type="text/javascript">
+
+        /* Section 1 */   
+
+        var name = "Joe"; /*Balise html*/
+        var city = 'London'; /*Ville*/
+        var age = 32; /*Age de l'user*/
+        var isRed = true; /*Couleur*/
+        var isOld = age > 80; /*SI age > 80 alors il est vieux*/
+
+        var previousJobs = ['lawyer', 'developper', 'Professionnal climber']; /*Ancien job*/
+
+        function info(height, weight) {
+            if (height > 180) {
+                console.log('Vous êtes grand'); /*Si taille supérieur à 180 alors tu es grand*/
+            }
+            if (weight < 0) {
+                console.log('oups, there is a problem'); /*Si poids inférieur à 0, il y a un soucis*/
+            } else if ( weight < 15) {
+                console.log('Are you that slim ?') /*Si le poids est inférieur à 15 tu es mince*/
+            } else {
+                console.log('Good !') /*Sinon, c'est ok, pas de fat shaming dans cet exo*/
+            }
+        }
+
+        info(165, 45);
+
+        var myHeight = 175; /*Taille est de 175*/
+        var myWeight = 86; /*Poids est des 86*/
+
+        info(myHeight, myWeight); /*On déclare la taille et le poids dans info*/
+
+        info(myHeight + 15, myWeight - 100); /*On fait un calcul dans info*/
+
+        function toUpper(variable) { /*Déclaration d'une fonction avec un paramètre variable*/
+            return variable.toUpperCase(); /*Elle retourne le paramètre donné en entré, et la passe en majuscule*/
+        }
+
+        var upperName = toUpper(name); /*Prend le nom et le passe en majuscule*/
+
+        for (i = 0; i < 3; i = i + 1) { /*Création d'une boucle qui va se répéter 3 fois*/
+            console.log(previousJobs[i]); /*Affiche dans la console tout les jobs précédents, dans notre cas 3, et numéroté*/
+        }
+
+        /* Section 2: */
+
+        // afficher la ville dans laquele Joe vit.
+        console.log(city)
+
+        // afficher si Joe est roux ou pas.
+        if (isRed === true) {
+            console.log("Oui il est roux")
+        } else {
+            console.log("Non il n'est pas roux")
+        }
+        /* Section 3 */
+
+        console.log(myVariable);
+
+        </script>
+
+    </body>
+</html>
