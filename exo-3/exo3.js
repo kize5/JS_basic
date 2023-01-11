@@ -29,29 +29,32 @@ function getComputerChoice () {
 /*Je préfère stocker le résultat des functions pour la simplicité*/
 let player = getPlayerChoice(playerInput);
 let pc = getComputerChoice();
+
+/*Fonction pour déterminé qui du player ou du pc win*/
 function findWinner (player, pc) {
-    console.log("Coup du joueur : " + player);
-    console.log("Coup du pc : " + pc);
-    if (player === pc) {
-        return "Tied";
-    } else {
-        if (player === "rock") {
-            if (pc === "scissors") {
-                return "Player win";
-            } else return "Pc win";
-        }
-        if (player === "scissors") {
-            if (pc === "paper") {
-                return "Player win";
-            } else return "Pc win";
-        }
-        if (player === "paper") {
-            if (pc === "rock") {
-                return "Player win"
-            } else return "Pc win"
+    if (player === "rock" || player === "paper" || player === "scissors") {
+        console.log("Coup du joueur : " + player);
+        console.log("Coup du pc : " + pc);
+        if (player === pc) {
+            return "Tied";
+        } else {
+            if (player === "rock") {
+                if (pc === "scissors") {
+                    return "Player win";
+                } else return "Pc win";
+            }
+            if (player === "scissors") {
+                if (pc === "paper") {
+                    return "Player win";
+                } else return "Pc win";
+            }
+            if (player === "paper") {
+                if (pc === "rock") {
+                    return "Player win"
+                } else return "Pc win"
+            }
         }
     }
 }
-
 
 console.log(findWinner(player, pc));
