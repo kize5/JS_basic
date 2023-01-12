@@ -44,10 +44,11 @@ function addPlayer (first, last, age) {
     team.players.push(newplayer);
 }
 
-addPlayer("test", "again", 99);
+
 addPlayer("ok", "why", 50);
 addPlayer("Billy", "none", 25);
 addPlayer("gogo", "lul", 75);
+addPlayer("Joe", "Lopez", 99);
 console.log(team.players)
 
 function addGames (opponent, teamPoints, opponentPoints) {
@@ -64,18 +65,41 @@ addGames("GG", 32, 15);
 console.log(team.games);
 
 
-/*for (let x in team.games) {
-    let total = 0;
-    total = total + team.games;
-    console.log(total);
-}*/
+let totalTeamPoint = 0;
+let opponentAvg = 0;
+let a = 0;
+team.games.forEach((e) => {
 
-total = Math.sum(team.games)
-console.log(total)
+    totalTeamPoint += e.teamPoints;
+});
 
-/*
-for (const x in team.games) {
-    console.log(`${x}: ${team.games[x]}`)
+console.log("Point total de l'équipe : " + totalTeamPoint);
+
+team.games.forEach((e) => {
+    let b = 0;
+    a++;
+    b += e.opponentPoints;
+    let avg = b/a;
+    opponentAvg += avg;
+});
+
+console.log("Moyenne des points de l'équipe adv : " + opponentAvg);
+
+let count = 0;
+function old () {
+    team.players.forEach((e) =>
+    {
+        if (e.age > count) {
+            count = e.age;
+        }
+    })
+    team.players.forEach((e) =>
+    {
+        if (e.age === count) {
+            player = "Le joueur le plus agé est : " + e.firstName + " " + e.lastName + " qui à " + e.age;
+        }
+    })
 }
-*/
 
+(old());
+console.log(player);
