@@ -1,23 +1,71 @@
 <!doctype html>
 <html lang="fr">
 
-  <head>
+<head>
+    <title>Exo7</title>
     <meta charset="utf-8">
-  </head>
+    <link rel="stylesheet" href="main.css">
+</head>
 
-  <body>
-    <div class="container">
-        <h1>Exercice 7</h1>
-      <div id="ici">
-        <p>ici js !</p>
-      </div>
+<body>
+<div class="container">
+    <h1>Exercice 7</h1>
+   <!--Section trier-->
+    <div class="dropdown">
+        <button class="dropbtn">Trier</button>
+        <div class="dropdown-content">
+            <a href="#" onclick="choose('ascN')">Nom croissant</a>
+            <a href="#" onclick="choose('descN')">Nom décroissant</a>
+            <a href="#" onclick="choose('ascP')">Prix croissant</a>
+            <a href="#" onclick="choose('descP')">Prix décroissant</a>
+        </div>
     </div>
 
-    <input aria-label="rechercher un type">
-    <button id="btnLf" style="width: 100px; height: 30px; margin: 20px">Clic me</button>
+    <!--Section afficher JS-->
+    <div id="ici">
 
-    <script src="datas.js"></script>
-    <script src="exo7.js"></script>
-  </body>
+
+    </div>
+    <div id="ici2">
+
+    </div>
+</div>
+<!--Section rechercher-->
+<div class="recherche">
+    <input id="inpTxt" name="Recherche type" type="text" aria-label="rechercher un type"><br>
+    <button id="btnLf" style="width: 100px; height: 30px; margin: 20px" onclick="onMainFasle(); choose('x')">Clic me</button>
+    <br>
+    <label for="btnLf">Voir uniquement les articles en stock</label>
+    <div><input aria-label="En stock" name="btnLf" id="check" type="checkbox" style="width: 30px; height:30px"></div>
+</div>
+
+
+<!--Section formulaire-->
+
+<h2>Ajoutez ici un nouveau produit</h2>
+<br>
+<form id="form" name="form" style="margin: 5px">
+
+    <label for="nameForm">Entrer le nom du produit</label>
+    <input id="nameForm" type="text" name="name"><br>
+
+    <label for="typeForm">Entrer le type du produit</label>
+    <input id="typeForm" type="text" name="type"><br>
+
+    <label for="descForm">Entrer la description du produit</label>
+    <input id="descForm" type="text" name="desc"><br>
+
+    <label for="priceForm">Entrer le prix du produit</label>
+    <input id="priceForm" type="text" name="price"><br>
+
+    <label for="qtyForm">Entrer la quantité du produit</label>
+    <input id="qtyForm" type="text" name="qty"><br>
+
+    <button type="submit" style="width: 100px; height: 30px; margin: 20px">Envoyez</button>
+</form>
+
+<script src="datas.js"></script>
+<script src="exo7.js"></script>
+</body>
 
 </html>
