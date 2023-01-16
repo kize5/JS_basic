@@ -53,16 +53,19 @@
     <input id="typeForm" type="text" name="type"><br>
 
     <label for="descForm">Entrer la description du produit</label>
-    <input id="descForm" type="text" name="desc"><br>
+    <input id="descForm" type="text" name="description"><br>
 
     <label for="priceForm">Entrer le prix du produit</label>
     <input id="priceForm" type="text" name="price"><br>
 
     <label for="qtyForm">Entrer la quantité du produit</label>
-    <input id="qtyForm" type="text" name="qty"><br>
+    <input id="qtyForm" type="text" name="quantity"><br>
 
     <button type="submit" style="width: 100px; height: 30px; margin: 20px">Envoyez</button>
 </form>
+
+<button id="btnContact" onclick="onMainFasle(); choose('contact')">Show Contact</button>
+<button id="btnMain" onclick="onMainTrue(); choose('x')">Accueil</button>
 
 <script src="datas.js"></script>
 <script src="exo7.js"></script>

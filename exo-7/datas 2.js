@@ -1,4 +1,4 @@
-var jsonDatas=[
+let jsonDatas=[
 {
 	"type" : "car",
 	"items": [
