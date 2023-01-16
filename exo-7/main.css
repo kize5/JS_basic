@@ -70,3 +70,32 @@ body {
     border-radius: 20px;
     height: 50px;
 }
+
+input {
+    margin: 5px;
+    border-radius: 20px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.recherche {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#btnLf {
+    width: 100px;
+    height: 30px;
+    margin: 5px;
+}
+
+#titreAddProduct {
+    text-align: center;
+}

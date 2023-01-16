@@ -12,10 +12,38 @@ let trad = [{
     show: "spectacle",
 }]
 
+/*Créer un nouveau json avec la bonne structure*/
+let newJson = [];
+function jsonv2 () {
+    for (let i = 0; i < jsonDatas.length; i++) {
+        let actualE = jsonDatas[i];
+        let newObject = {
+            "type": actualE.type,
+            "items": [
+                {
+                    "name": actualE.name,
+                    "description": actualE.description,
+                    "price": actualE.price,
+                    "quantity": actualE.quantity,
+                    "contact": {
+                        "lastName": fakeNom(),
+                        "firstName": fakePrenom(),
+                        "address": fakeAdress()
+                    }
+                }
+            ]
+        };
+        newJson.push(newObject);
+    }
+}
+/*Appel du nouveau json*/
+jsonv2();
+console.log(newJson);
+
 
 /*Insérer la traduction de type dans data.js*/
 function traducteur() {
-    jsonDatas.forEach((e) => {
+    newJson.forEach((e) => {
         Object.keys(trad[0]).forEach((elem) => {
             if (e.type === (elem)) {
                 e.traduction = trad[0][elem];
@@ -30,9 +58,9 @@ let varAscName
 
 /*Tri la data par name croissant*/
 function ascName() {
-    varAscName = jsonDatas.sort(function (a, b) {
-        let nameA = a.name.toUpperCase(); // ignore upper and lowercase
-        let nameB = b.name.toUpperCase(); // ignore upper and lowercase
+    varAscName = newJson.sort(function (a, b) {
+        let nameA = a.items[0].name.toUpperCase(); // ignore upper and lowercase
+        let nameB = b.items[0].name.toUpperCase(); // ignore upper and lowercase
         if (nameA < nameB) {
             return -1;
         }
@@ -48,9 +76,9 @@ let varDescName
 
 /*Tri la data par name décroissant*/
 function descName() {
-    varDescName = jsonDatas.sort(function (a, b) {
-        let nameA = a.name.toUpperCase(); // ignore upper and lowercase
-        let nameB = b.name.toUpperCase(); // ignore upper and lowercase
+    varDescName = newJson.sort(function (a, b) {
+        let nameA = a.items[0].name.toUpperCase(); // ignore upper and lowercase
+        let nameB = b.items[0].name.toUpperCase(); // ignore upper and lowercase
         if (nameA < nameB) {
             return 1;
         }
@@ -66,9 +94,9 @@ let varAscPrice;
 
 /*Tri la data par prix croissant*/
 function ascPrice() {
-    varAscPrice = jsonDatas.sort(function (a, b) {
-        let priceA = a.price; // ignore upper and lowercase
-        let priceB = b.price; // ignore upper and lowercase
+    varAscPrice = newJson.sort(function (a, b) {
+        let priceA = a.items[0].price; // ignore upper and lowercase
+        let priceB = b.items[0].price; // ignore upper and lowercase
         if (priceA < priceB) {
             return -1;
         }
@@ -83,9 +111,9 @@ let varDescPrice;
 
 /*Tri la data par prix décroissant*/
 function descPrice() {
-    varDescPrice = jsonDatas.sort(function (a, b) {
-        let priceA = a.price; // ignore upper and lowercase
-        let priceB = b.price; // ignore upper and lowercase
+    varDescPrice = newJson.sort(function (a, b) {
+        let priceA = a.items[0].price; // ignore upper and lowercase
+        let priceB = b.items[0].price; // ignore upper and lowercase
         if (priceA < priceB) {
             return 1;
         }
@@ -113,23 +141,26 @@ function main(ball) {
     }
     document.getElementById("ici").innerHTML = "";
     ball.forEach((e) => {
-        document.getElementById("ici").innerHTML += `                       
-        <div>Name : ${e.name}</div>
-        <div>Price : ${e.price}</div>
-        <div>Quantity : ${e.quantity}</div>
+        document.getElementById("ici").innerHTML += `
+        <div class="box">                       
+        <div>Name : ${e.items[0].name}</div>
+        <div>Price : ${e.items[0].price}</div>
+        <div>Quantity : ${e.items[0].quantity}</div>
         <div>Type : ${e.type}</div>
-        <div>Traduction : ${e.traduction}</div>
-        <div>Description : ${e.description}</div>
+        <div>Traduction : ${e.items[0].traduction}</div>
+        <div>Description : ${e.items[0].description}</div>
+        </div>
         <br>
     `;
     });
 }
 
-main(jsonDatas);
+
+main(newJson);
 
 /*Logique pour choisir quoi afficher selon le filtre de tri*/
 function choose(x) {
-    let ball = jsonDatas;
+    let ball = newJson;
     if (x === 'ascN') {
         ascName();
         ball = varAscName;
@@ -171,15 +202,15 @@ function grabAll(ball) {
         document.getElementById("ici2").innerHTML = "";
     }
     ball.forEach((e) => {
-        if (x === e.type || x === e.traduction) {
+        if (x === e.type || x === e.items[0].traduction) {
             document.getElementById("ici").innerHTML = "";
             iciDiv2.innerHTML += `                       
-        <div>Name : ${e.name}</div>
-        <div>Price : ${e.price}</div>
-        <div>Quantity : ${e.quantity}</div>
+        <div>Name : ${e.items[0].name}</div>
+        <div>Price : ${e.items[0].price}</div>
+        <div>Quantity : ${e.items[0].quantity}</div>
         <div>Type : ${e.type}</div>
-        <div>Traduction : ${e.traduction}</div>
-        <div>Description : ${e.description}</div>
+        <div>Traduction : ${e.items[0].traduction}</div>
+        <div>Description : ${e.items[0].description}</div>
         <br>
     `;
         }
@@ -195,15 +226,15 @@ function grabStock(ball) {
             document.getElementById("ici2").innerHTML = "";
         }
         ball.forEach((e) => {
-            if (x === e.type && e.quantity > 0 || x === e.traduction && e.quantity > 0) {
+            if (x === e.type && e.items[0].quantity > 0 || x === e.items[0].traduction && e.items[0].quantity > 0) {
                 document.getElementById("ici").innerHTML = "";
                 iciDiv2.innerHTML += `                       
-        <div>Name : ${e.name}</div>
-        <div>Price : ${e.price}</div>
-        <div>Quantity : ${e.quantity}</div>
+        <div>Name : ${e.items[0].name}</div>
+        <div>Price : ${e.items[0].price}</div>
+        <div>Quantity : ${e.items[0].quantity}</div>
         <div>Type : ${e.type}</div>
-        <div>Traduction : ${e.traduction}</div>
-        <div>Description : ${e.description}</div>
+        <div>Traduction : ${e.items[0].traduction}</div>
+        <div>Description : ${e.items[0].description}</div>
         <br>
     `;
             }
@@ -239,36 +270,6 @@ document.querySelector('#inpTxt').addEventListener('keypress', function (e) {
         traducteur();
         choose('x');
     })
-
-
-/*Créer un nouveau json avec la bonne structure*/
-let newJson = [];
-function jsonv2 () {
-    for (let i = 0; i < jsonDatas.length; i++) {
-        let actualE = jsonDatas[i];
-        let newObject = {
-            "type": actualE.type,
-            "items": [
-                {
-                    "name": actualE.name,
-                    "description": actualE.description,
-                    "price": actualE.price,
-                    "quantity": actualE.quantity,
-                    "contact": {
-                        "lastName": fakeNom(),
-                        "firstName": fakePrenom(),
-                        "address": fakeAdress()
-                    }
-                }
-            ]
-        };
-        newJson.push(newObject);
-    }
-}
-
-/*Appel du nouveau json*/
-jsonv2();
-console.log(newJson);
 
 function showContact () {
         if (!isEmpty) {
