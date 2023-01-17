@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "fake-address-generator": "^1.1.0"
+    "fake-address-generator": "^1.1.0",
+    "jquery": "^3.6.3"
   }
 }

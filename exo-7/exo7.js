@@ -175,7 +175,7 @@ function choose(x) {
         ball = varDescPrice;
     } if (x === "contact") {
         console.log("Je passe par contact")
-        showContact();
+        showContact(ball);
         return 1;
     }
     if (onMain) {
@@ -271,11 +271,11 @@ document.querySelector('#inpTxt').addEventListener('keypress', function (e) {
         choose('x');
     })
 
-function showContact () {
+function showContact (ball) {
         if (!isEmpty) {
             document.getElementById("ici2").innerHTML = "";
         }
-    newJson.forEach((e) => {
+    ball.forEach((e) => {
         let contact = e.items[0].contact;
         document.getElementById("ici").innerHTML = "";
         iciDiv2.innerHTML += `                       
@@ -306,6 +306,21 @@ function fakeAdress () {
     let adressR
     return adressR = adress[Math.floor(Math.random()*adress.length)]
 }
+
+/* Test et découverte Jquery */
+
+$("body").click(function() {
+    $("body").css("background", "linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(2,0,36,1) 100%)");
+})
+
+// Alternative JS Vanilla
+// const body = document.body;
+// body.addEventListener("click", function() {
+//     console.log("ça clic")
+//     // Changement de la couleur de fond de l'élément <body>
+//     body.style.background = 'linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(2,0,36,1) 100%)'
+// });
+
 
 
 
